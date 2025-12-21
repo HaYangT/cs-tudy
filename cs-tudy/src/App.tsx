@@ -1,12 +1,13 @@
 import './App.css'
-
+import FCFS from './components/cs/os/fcfs';
+import { PageLayout } from './components/pages/PageLayout';
 function App() {
 
   return (
-    <div className="notebook">
-    폰트 테스트 ABCDEFGHIJKLMNOP <br/>
-    1234567890 <br/>
-    !@#$%^&*()_+ 
+    <div>
+      <PageLayout>
+      <FCFS />
+      </PageLayout>
     </div>
   )
 }
