@@ -9,7 +9,7 @@ interface Process {
     isQueued: boolean;
 }
 
-const FCFSNotebook: React.FC = () => {
+const FCFS: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [pId, setPId] = useState('P1');
@@ -164,4 +164,4 @@ const FCFSNotebook: React.FC = () => {
     );
 };
 
-export default FCFSNotebook;
+export default FCFS;
