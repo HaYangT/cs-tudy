@@ -53,10 +53,10 @@ const FCFS: React.FC = () => {
         if (!ctx) return;
 
         const updateArrival = () => {
-            processes.current.forEach((p) => {
-                if (p.arrival <= currentTime.current && !p.isQueued) {
-                    readyQueue.current.push(p);
-                    p.isQueued = true;
+            processes.current.forEach((process) => {
+                if (process.arrival <= currentTime.current && !process.isQueued) {
+                    readyQueue.current.push(process);
+                    process.isQueued = true;
                 }
             });
         };
