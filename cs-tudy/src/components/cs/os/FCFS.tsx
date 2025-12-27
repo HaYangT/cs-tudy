@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import './styles/FCFS.css';
 
 interface Process {
     id: string;

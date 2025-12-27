@@ -1,0 +1,60 @@
+.controls {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.controls input {
+  font-family: "THE_Nakseo", cursive;
+  font-size: 18px;
+
+  background: transparent;   
+  border: none;
+  border-bottom: 2px solid #555; 
+  outline: none;
+
+  padding: 4px 6px;
+  width: 80px;
+
+  color: #0c0606;
+}
+
+.controls input[type="number"]::-webkit-inner-spin-button,
+.controls input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.controls input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.controls input:focus {
+  border-bottom-color: #222;
+}
+
+.controls input::placeholder {
+  color: #999;
+  font-family: "THE_Nakseo", cursive;
+}
+.controls button {
+  font-family: "THE_Nakseo", cursive;
+  font-size: 17px;
+
+  background: transparent;
+  border: 2px dashed #666;  
+  border-radius: 6px;
+
+  padding: 6px 14px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.controls button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.controls button:active {
+  transform: translateY(1px);
+}
