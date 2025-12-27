@@ -151,6 +151,7 @@ const SJF: React.FC = () => {
 
   return (
     <div className="notebook">
+      <h1>SJF</h1>
       <div className="controls">
         <input type="text" value={pId} onChange={(e) => setPId(e.target.value)} placeholder="ID" />
         <input

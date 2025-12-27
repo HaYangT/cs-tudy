@@ -144,6 +144,7 @@ const FCFS: React.FC = () => {
 
     return (
         <div className="notebook">
+            <h1>FCFS</h1>
             <div className="controls">
                 <input type="text" value={pId} onChange={(e) => setPId(e.target.value)} placeholder="ID" />
                 <input type="number" value={pArrival} onChange={(e) => setPArrival(Number(e.target.value))} placeholder="도착" />
