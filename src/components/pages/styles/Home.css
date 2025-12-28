@@ -1,0 +1,10 @@
+.notebook h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.notebook p {
+  font-size: 17px;
+  line-height: 1.8;
+  opacity: 0.9;
+}

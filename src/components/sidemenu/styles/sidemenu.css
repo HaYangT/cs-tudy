@@ -1,0 +1,81 @@
+.side-menu {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+
+  width: 260px;
+  padding: 24px 20px;
+
+  background: #fff8c6;
+  border-radius: 10px;
+
+  box-shadow:
+    3px 3px 0 #e0d28a,
+    6px 6px 10px rgba(0, 0, 0, 0.15);
+
+  transform: rotate(-1.5deg);
+  z-index: 999;
+
+  font-family: "THE_Nakseo", cursive;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  padding: 10px 6px;
+  border-bottom: 1px dashed #cfc48a;
+}
+
+.side-menu a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 17px;
+  padding-left: 4px;
+
+  position: relative;
+}
+
+.side-menu a::before {
+  content: "•";
+  margin-right: 8px;
+  color: #a59c5a;
+}
+
+.side-menu a:hover {
+  background: linear-gradient(
+    to right,
+    rgba(255, 235, 59, 0.45),
+    rgba(255, 235, 59, 0.15)
+  );
+}
+
+.side-menu a.active {
+  background: linear-gradient(
+    to right,
+    rgba(255, 193, 7, 0.55),
+    rgba(255, 193, 7, 0.25)
+  );
+  font-weight: bold;
+}
+.side-menu::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff8c6,
+    #fff8c6 8px,
+    #e0d28a 9px
+  );
+
+  border-radius: 6px;
+}

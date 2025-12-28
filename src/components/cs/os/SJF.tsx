@@ -150,7 +150,7 @@ const SJF: React.FC = () => {
   }, [isPlaying]);
 
   return (
-    <div className="notebook">
+    <section className="sjf-page">
       <h1>SJF</h1>
       <div className="controls">
         <input type="text" value={pId} onChange={(e) => setPId(e.target.value)} placeholder="ID" />
@@ -169,7 +169,7 @@ const SJF: React.FC = () => {
       </div>
 
       <canvas ref={canvasRef} width={1500} height={400} style={{ display: "block", marginTop: "20px" }} />
-    </div>
+    </section>
   );
 };
 

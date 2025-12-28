@@ -143,7 +143,7 @@ const FCFS: React.FC = () => {
     }, [isPlaying]); // isPlaying이 바뀔 때마다 draw 내부의 update 조건이 바뀜
 
     return (
-        <div className="notebook">
+        <section className="fcfs-page">
             <h1>FCFS</h1>
             <div className="controls">
                 <input type="text" value={pId} onChange={(e) => setPId(e.target.value)} placeholder="ID" />
@@ -162,7 +162,7 @@ const FCFS: React.FC = () => {
                 height={400}
                 style={{ display: 'block', marginTop: '20px' }}
             />
-        </div>
+        </section>
     );
 };
 
