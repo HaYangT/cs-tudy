@@ -58,3 +58,8 @@
 .controls button:active {
   transform: translateY(1px);
 }
+
+.controls button:disabled{
+  opacity: 0.5;
+  cursor : not-allowed;
+}

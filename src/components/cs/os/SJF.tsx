@@ -10,11 +10,13 @@ interface Process {
 }
 
 const SJF: React.FC = () => {
+  type Mode = "NON-PREEMPTIVE" | "PREEMPTIVE";
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [pId, setPId] = useState("P1");
   const [pArrival, setPArrival] = useState(0);
   const [pBurst, setPBurst] = useState(10);
+  const [mode, setMode] = useState<Mode>("NON-PREEMPTIVE");
 
   const processes = useRef<Process[]>([]);
   const readyQueue = useRef<Process[]>([]);
@@ -46,10 +48,6 @@ const SJF: React.FC = () => {
     setPId("P1");
   };
 
-  const sortReadyQueue = () => {
-    readyQueue.current.sort((a, b) => a.burst - b.burst);
-  };
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -57,17 +55,32 @@ const SJF: React.FC = () => {
     if (!ctx) return;
 
     const updateArrival = () => {
-      const arrived = processes.current.filter((p) => p.arrival <= currentTime.current && !p.isQueued);
+      const arrived = processes.current.filter(
+        (p) => p.arrival <= currentTime.current && !p.isQueued
+      );
 
       arrived.forEach((p) => {
         p.isQueued = true;
         readyQueue.current.push(p);
       });
 
-      if (arrived.length > 0) {
-        sortReadyQueue();
+      if (arrived.length === 0) return;
+
+      if (mode === "PREEMPTIVE") {
+        readyQueue.current.sort((a, b) => a.remaining - b.remaining);
+
+        if (
+          runningProcess.current &&
+          readyQueue.current[0].remaining < runningProcess.current.remaining
+        ) {
+          readyQueue.current.push(runningProcess.current);
+          runningProcess.current = readyQueue.current.shift() || null;
+        }
+      } else {
+        readyQueue.current.sort((a, b) => a.burst - b.burst);
       }
     };
+
     const updateExecution = () => {
       if (!runningProcess.current && readyQueue.current.length > 0) {
         runningProcess.current = readyQueue.current.shift() || null;
@@ -111,7 +124,7 @@ const SJF: React.FC = () => {
         ctx.fillStyle = p.color;
         ctx.fillRect(x, y, boxSize, boxSize);
 
-        ctx.strokeStyle = "#555";
+        ctx.strokeStyle = mode === "PREEMPTIVE" ? "#d33" : "#333";
         ctx.lineWidth = 1;
         ctx.strokeRect(x, y, boxSize, boxSize);
 
@@ -147,12 +160,15 @@ const SJF: React.FC = () => {
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [isPlaying]);
+  }, [isPlaying, mode]);
 
   return (
     <section className="sjf-page">
       <h1>SJF</h1>
       <div className="controls">
+        <button onClick={() => setMode(mode === "NON-PREEMPTIVE" ? "PREEMPTIVE" : "NON-PREEMPTIVE")} disabled={isPlaying}>
+          모드: {mode}
+        </button>
         <input type="text" value={pId} onChange={(e) => setPId(e.target.value)} placeholder="ID" />
         <input
           type="number"
